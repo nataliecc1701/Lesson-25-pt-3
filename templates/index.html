@@ -7,12 +7,14 @@
         <h1>All Cupcakes:</h1>
         <ul id="cupcakes-list"></ul>
         <h2>Add A Cupcake</h2>
-        <form>
-            <input type="text" name="flavor" placeholder="flavor">
-            <input type="text" name="size" placeholder="size">
-            <input type="number" name="rating" placeholder="rating">
-            <input type="text" name="image" placeholder="image URL">
+        <form id="cupcakes-form">
+            <input type="text" name="flavor" placeholder="flavor" id="flavor-field">
+            <input type="text" name="size" placeholder="size" id="size-field">
+            <input type="number" name="rating" placeholder="rating" id="rating-field">
+            <input type="text" name="image" placeholder="image URL" id="image-field">
             <button>Add Cupcake</button>
         </form>
+        <script src="https://unpkg.com/axios/dist/axios.js"></script>
+        <script src="static/cupcakes.js"></script>
     </body>
 </html>

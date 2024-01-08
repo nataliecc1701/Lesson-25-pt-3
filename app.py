@@ -1,7 +1,7 @@
 """Flask app for Cupcakes"""
 
 # Flask imports
-from flask import Flask, render_template, redirect, flash, request
+from flask import Flask, jsonify
 
 # Local imports
 from models import connect_db, Cupcake
@@ -25,3 +25,10 @@ with open("config.txt") as config:
 connect_db(app)
 
 # Routes
+@app.route("/api/cupcakes")
+def get_all_cupcakes():
+    '''Returns JSON of all cupcakes'''
+    cupcakes = Cupcake.query.all()
+    serialized = [c.to_dict() for c in cupcakes]
+    
+    return jsonify(cupcakes=serialized)

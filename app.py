@@ -59,3 +59,22 @@ def add_cupcake():
     serialized = new_cupcake.to_dict()
     # Return with status code 201
     return ( jsonify(cupcake = serialized), 201 )
+
+@app.route("/api/cupcakes/<cupcake_id>", methods=["PATCH"])
+def update_cupcake(cupcake_id):
+    '''Updates a cupcake. Requires that FULL json for the cupcake be sent in the request body
+    
+    Does not change cupcake id'''
+    cupcake = Cupcake.query.get_or_404(cupcake_id)
+    
+    # pull the parameters from JSON and apply them to the cupcake
+    cupcake.flavor = request.json["flavor"]
+    cupcake.size = request.json["size"]
+    cupcake.rating = request.json["rating"]
+    cupcake.image = request.json["image"]
+    
+    db.session.add(cupcake)
+    db.session.commit()
+    
+    return jsonify(cupcake=cupcake.to_dict())
+    

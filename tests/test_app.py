@@ -2,7 +2,11 @@
 
 To use these tests copy first the app, and then the contents of the tests folder,
 into your testing environment. Note that the _testing_ variant of config.txt found in
-the tests folder is needed, NOT the _live_ variant found in the main folder
+the tests folder is needed, NOT the _live_ variant found in the main folder.
+
+This can be done in a pinch by copying app.py and models.py into the /tests folder and then
+running python -m unittest in /tests, although versions of those files should not be kept
+there when not testing.
 
 USING THE LIVE CONFIG.TXT WITH THESE UNIT TESTS WILL SMASH YOUR DATABASE!!!!!'''
 

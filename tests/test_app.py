@@ -1,14 +1,15 @@
+'''Test cases for flask routes
+
+To use these tests copy first the app, and then the contents of the tests folder,
+into your testing environment. Note that the _testing_ variant of config.txt found in
+the tests folder is needed, NOT the _live_ variant found in the main folder
+
+USING THE LIVE CONFIG.TXT WITH THESE UNIT TESTS WILL SMASH YOUR DATABASE!!!!!'''
+
 from unittest import TestCase
 
 from app import app
 from models import db, Cupcake
-
-# Use test database and don't clutter tests with SQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcakes_test'
-app.config['SQLALCHEMY_ECHO'] = False
-
-# Make Flask errors be real errors, rather than HTML pages with error info
-app.config['TESTING'] = True
 
 # push our app context
 app.app_context().push()

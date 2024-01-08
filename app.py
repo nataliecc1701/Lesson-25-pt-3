@@ -77,4 +77,15 @@ def update_cupcake(cupcake_id):
     db.session.commit()
     
     return jsonify(cupcake=cupcake.to_dict())
+
+@app.route("/api/cupcakes/<cupcake_id>", methods=["DELETE"])
+def delete_cupcake(cupcake_id):
+    '''Deletes a cupcake. Returns JSON saying the cupcake is deleted'''
+    
+    cupcake = Cupcake.query.get_or_404(cupcake_id)
+    
+    db.session.delete(cupcake)
+    db.session.commit()
+    
+    return jsonify(message="Deleted")
     

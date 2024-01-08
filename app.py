@@ -56,6 +56,6 @@ def add_cupcake():
     db.session.add(new_cupcake)
     db.session.commit()
     
-    serialized = new_cupcake.to_dict
+    serialized = new_cupcake.to_dict()
     # Return with status code 201
     return ( jsonify(cupcake = serialized), 201 )

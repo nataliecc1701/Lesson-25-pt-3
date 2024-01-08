@@ -1,7 +1,7 @@
 """Flask app for Cupcakes"""
 
 # Flask imports
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 # Local imports
 from models import db, connect_db, Cupcake
@@ -24,7 +24,7 @@ with open("config.txt") as config:
         
 connect_db(app)
 
-# Routes
+# API Routes
 @app.route("/api/cupcakes")
 def get_all_cupcakes():
     '''Returns JSON of all cupcakes'''
@@ -88,4 +88,8 @@ def delete_cupcake(cupcake_id):
     db.session.commit()
     
     return jsonify(message="Deleted")
-    
+
+# Front-End Routes
+@app.route("/")
+def show_index():
+    return render_template("index.html")
